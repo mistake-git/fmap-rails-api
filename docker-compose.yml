@@ -10,7 +10,6 @@ services:
     volumes:
       - .:/app
       - /var/tmp
-      # socketファイルの共有
       - sockets:/app/tmp/sockets
     tty: true
     depends_on:

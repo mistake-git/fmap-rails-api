@@ -1,4 +1,20 @@
 Rails.application.routes.draw do
-  resources :posts
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  scope :api do
+    scope :v1 do
+      resources :posts do
+        resources :comments
+        resources :likes
+        collection {get :search}
+        member { get :likes }
+        member { get :likes_users }
+        member { get :data }
+      end
+      resources :users do
+        member { get :posts }
+        member { get :likes_posts }
+        member { get :data }
+      end
+      resources :user_images, only: [:update, :destroy]
+    end
+  end
 end
