@@ -1,12 +1,6 @@
 FROM ruby:2.6.3
 
-RUN apt-get update -qq && \
-  apt-get install -y apt-utils \
-  build-essential \
-  libpq-dev \
-  nodejs \
-  vim \
-  default-mysql-client 
+RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs
 
 WORKDIR /app
 
