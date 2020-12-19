@@ -1,6 +1,6 @@
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins 'http://fmap-alb-2099770241.ap-northeast-1.elb.amazonaws.com'
+    origins ENV['CORS']
 
     resource '*',
       headers: :any,
