@@ -5,7 +5,7 @@ Rails.application.configure do
   config.cache_classes = true
 
   Rails.application.routes.default_url_options[:host] = 'https://fmap-api.tk'
-  Rails.application.routes.default_url_options[:port] = 80
+  Rails.application.routes.default_url_options[:port] = 3000
 
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both threaded web servers
