@@ -4,7 +4,7 @@ Rails.application.configure do
   # Code is not reloaded between requests.
   config.cache_classes = true
 
-  Rails.application.routes.default_url_options[:host] = 'http://fmap-alb-2099770241.ap-northeast-1.elb.amazonaws.com'
+  Rails.application.routes.default_url_options[:host] = 'https://fmap-api.tk'
   Rails.application.routes.default_url_options[:port] = 80
 
   # Eager load code on boot. This eager loads most of Rails and
