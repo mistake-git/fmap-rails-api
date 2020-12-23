@@ -45,3 +45,6 @@ gem 'active_model_serializers'
 
 #環境変数設定
 gem 'dotenv-rails'
+
+gem 'mini_magick'
+gem 'aws-sdk-s3', require: false
