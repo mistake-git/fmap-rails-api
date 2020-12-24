@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :update, :posts, :likes_posts, :data]
 
   def search
-    users = Post.search(params[:search]).order(created_at: :desc)
+    users = User.search(params[:search]).order(created_at: :desc)
     render json: users
   end
 
