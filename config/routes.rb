@@ -10,6 +10,7 @@ Rails.application.routes.draw do
         member { get :data }
       end
       resources :users do
+        collection {get :search}
         member { get :posts }
         member { get :likes_posts }
         member { get :data }
