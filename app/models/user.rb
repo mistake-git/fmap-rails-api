@@ -13,4 +13,12 @@ class User < ApplicationRecord
     image.attached? ?  url_for(image) : nil
   end
 
+  def self.search(search)
+    if search
+      Post.where(['name LIKE ?', "%#{search}%"])
+    else
+      Post.all
+    end
+  end
+
 end
