@@ -8,7 +8,7 @@ local:
 
 amazon:
   service: S3
-  access_key_id: <%= Rails.application.credentials.dig(:aws, :access_key_id) %>
-  secret_access_key: <%= Rails.application.credentials.dig(:aws, :secret_access_key) %>
-  region: ap-northeast-1 #東京
+  access_key_id: AKIASBVNWGODCDTMVJXN
+  secret_access_key: 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
+  region: ap-northeast-1 
   bucket: fmap-s3
