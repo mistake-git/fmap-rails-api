@@ -2,7 +2,7 @@ Rails.application.configure do
   config.cache_classes = true
   
   Rails.application.routes.default_url_options[:protocol] = 'https'
-  Rails.application.routes.default_url_options[:host] = 'fmap-api.tk'
+  Rails.application.routes.default_url_options[:host] = 'https://fishing-map-api.herokuapp.com/'
 
   config.eager_load = true
   
