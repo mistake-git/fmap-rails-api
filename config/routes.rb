@@ -4,10 +4,13 @@ Rails.application.routes.draw do
       resources :posts do
         resources :comments
         resources :likes
+        resources :rankings
         collection {get :search}
         member { get :likes }
         member { get :likes_users }
         member { get :data }
+        member { get :data }
+        
       end
       resources :users do
         collection {get :search}
@@ -16,6 +19,7 @@ Rails.application.routes.draw do
         member { get :data }
       end
       resources :user_images, only: [:update, :destroy]
+     
     end
   end
 end
