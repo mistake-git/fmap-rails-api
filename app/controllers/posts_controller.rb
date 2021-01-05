@@ -7,6 +7,11 @@ class PostsController < ApplicationController
     render json: posts
   end
 
+  def map
+    posts = Post.all.order(created_at: :desc).limit(100)
+    render json: posts
+  end
+
   def index
     posts = Post.all.order(created_at: :desc)
     render json: posts
