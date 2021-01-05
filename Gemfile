@@ -52,3 +52,6 @@ gem 'aws-sdk-s3', require: false
 
 #住所を緯度経度に変換
 gem "geocoder"
+
+#ページネーション
+gem 'kaminari'
