@@ -46,5 +46,9 @@ gem 'active_model_serializers'
 #環境変数設定
 gem 'dotenv-rails'
 
+#S3
 gem 'mini_magick'
 gem 'aws-sdk-s3', require: false
+
+#住所を緯度経度に変換
+gem "geocoder"

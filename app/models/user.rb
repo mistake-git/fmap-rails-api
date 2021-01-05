@@ -8,7 +8,9 @@ class User < ApplicationRecord
   has_many :likes_posts, through: :likes, source: :post
   has_many :posts, dependent: :destroy
   has_one_attached :image
-
+  geocoded_by :address
+  after_validation :geocode
+  
   def image_url
     image.attached? ?  url_for(image) : nil
   end
