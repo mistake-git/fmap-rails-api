@@ -1,7 +1,7 @@
-10.times.each do |i|
+20.times.each do |i|
   User.create(
-    name: "test#{i + 1}",
-    email: "test#{i + 1}@gmail.com",
-    uid: "test#{i + 1}"
+    name: "test#{i + 11}",
+    email: "test#{i + 11}@gmail.com",
+    uid: "test#{i + 11}"
   )
 end
