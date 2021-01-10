@@ -35,12 +35,12 @@ class UsersController < ApplicationController
   end
 
   def posts
-    posts = @user.posts.page(params[:page]).per(4).order(created_at: :desc)
+    posts = @user.posts.order(created_at: :desc)
     render json: posts
   end
 
   def likes_posts
-    likes_posts = @user.likes_posts.page(params[:page]).per(4).order(created_at: :desc)
+    likes_posts = @user.likes_posts.order(created_at: :desc)
     render json: likes_posts
   end
 
