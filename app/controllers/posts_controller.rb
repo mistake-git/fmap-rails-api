@@ -7,6 +7,12 @@ class PostsController < ApplicationController
     render json: posts
   end
 
+  def lat_lng_search
+    results = Geocoder.search(params[:address])
+    lat_lng = results.first.coordinates
+    render json: lat_lng 
+  end
+
   def map
     posts = Post.all.order(created_at: :desc).limit(100)
     render json: posts
