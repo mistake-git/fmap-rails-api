@@ -37,7 +37,6 @@ class PostsController < ApplicationController
     }
   end
 
-
   def likes_users
     likes_users = @post.likes_users
     render json: likes_users
