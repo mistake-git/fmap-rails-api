@@ -5,6 +5,7 @@ Rails.application.routes.draw do
         resources :comments
         resources :likes
         collection {get :search}
+        collection {get :get_lat_lng}
         collection {get :map}
         member {get :ranking}
         member { get :likes }
