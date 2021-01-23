@@ -6,7 +6,7 @@ Rails.application.routes.draw do
         resources :likes
         collection {get :search}
         collection {get :map}
-        collection {get :ranking}
+        member {get :ranking}
         member { get :likes }
         member { get :likes_users }
         member { get :data }
