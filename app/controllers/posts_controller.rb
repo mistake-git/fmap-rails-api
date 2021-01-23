@@ -37,6 +37,11 @@ class PostsController < ApplicationController
     }
   end
 
+  def ranking
+    posts = Post.where(name: @post.name).where("size IS NOT NULL").order(size: 'DESC').limit(8)
+    render json:  posts
+  end
+
   def likes_users
     likes_users = @post.likes_users
     render json: likes_users
