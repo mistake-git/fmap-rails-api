@@ -10,7 +10,13 @@ class PostsController < ApplicationController
   def get_lat_lng
     results = Geocoder.search(params[:address])
     lat_lng = results.first.coordinates
-    render json: lat_lng 
+    lat = lat_lng[0]
+    lng = lat_lng[1]
+    render json: {
+      lat: lat_lng[0], 
+      lng: lat_lng[1], 
+    } 
+    
   end
 
   def map
