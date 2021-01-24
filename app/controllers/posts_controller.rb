@@ -16,7 +16,6 @@ class PostsController < ApplicationController
       lat: lat_lng[0], 
       lng: lat_lng[1], 
     } 
-    
   end
 
   def map
