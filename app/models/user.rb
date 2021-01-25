@@ -10,9 +10,9 @@ class User < ApplicationRecord
   has_one_attached :image
   geocoded_by :address
   after_validation :geocode
-  
+
   def image_url
-    image.attached? ?  url_for(image) : nil
+    image.attached? ? url_for(image) : nil
   end
 
   def self.search(search)
@@ -22,5 +22,4 @@ class User < ApplicationRecord
       User.all
     end
   end
-
 end

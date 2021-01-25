@@ -2,8 +2,8 @@ class CommentsController < ApplicationController
   before_action :set_post, only: [:index, :create, :destroy]
   before_action :set_comment, only: [:update, :destroy]
 
-  def index 
-    comments =  @post.comments.order(created_at: :desc)
+  def index
+    comments = @post.comments.order(created_at: :desc)
     render json: comments
   end
 
@@ -33,7 +33,7 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:id ,:content, :user_id)
+    params.require(:comment).permit(:id, :content, :user_id)
   end
 
   def set_post
@@ -43,5 +43,4 @@ class CommentsController < ApplicationController
   def set_comment
     @comment = Comment.find(params[:id])
   end
-
 end

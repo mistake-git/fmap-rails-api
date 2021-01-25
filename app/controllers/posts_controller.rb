@@ -13,9 +13,9 @@ class PostsController < ApplicationController
     lat = lat_lng[0]
     lng = lat_lng[1]
     render json: {
-      lat: lat_lng[0], 
-      lng: lat_lng[1], 
-    } 
+      lat: lat_lng[0],
+      lng: lat_lng[1]
+    }
   end
 
   def map
@@ -37,19 +37,19 @@ class PostsController < ApplicationController
     same_name_post = Post.where(name: @post.name)
     size_data = same_name_post.where.not(size: nil).group(:size).sum(:number)
     feed_data = same_name_post.where.not(feed: '').group(:feed).sum(:number)
-    date_data = same_name_post.where.not(date: nil).group("MONTH(date)").sum(:number)
-    time_data = same_name_post.where.not(time: nil).group("HOUR(time)").sum(:number)
-    render json: 
+    date_data = same_name_post.where.not(date: nil).group('MONTH(date)').sum(:number)
+    time_data = same_name_post.where.not(time: nil).group('HOUR(time)').sum(:number)
+    render json:
     {
-      feed_data: feed_data, 
-      time_data: time_data, 
-      date_data: date_data, 
-      size_data: size_data, 
+      feed_data: feed_data,
+      time_data: time_data,
+      date_data: date_data,
+      size_data: size_data
     }
   end
 
   def ranking
-    posts = Post.where(name: @post.name).where("size IS NOT NULL").order(size: 'DESC').limit(8)
+    posts = Post.where(name: @post.name).where('size IS NOT NULL').order(size: 'DESC').limit(8)
     render json:  posts
   end
 
@@ -86,7 +86,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.permit(:id, :user_id, :name, :size, :weather, :weight, :date, :time, :number, :feed, :memo, :status, :latitude, :longitude, :image)
+    params.permit(:id, :user_id, :name, :size, :weather, :weight, :date, :time, :number, :feed, :memo, :status, :latitude,
+                  :longitude, :image)
   end
-  
 end

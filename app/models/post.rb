@@ -10,7 +10,7 @@ class Post < ApplicationRecord
   has_many :likes_users, through: :likes, source: :user
 
   def image_url
-    image.attached? ?  url_for(image) : nil
+    image.attached? ? url_for(image) : nil
   end
 
   def self.search(search)
@@ -20,5 +20,4 @@ class Post < ApplicationRecord
       Post.all
     end
   end
-  
 end

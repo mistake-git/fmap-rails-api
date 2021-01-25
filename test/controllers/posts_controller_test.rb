@@ -5,12 +5,12 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     @post = posts(:one)
   end
 
-  test "should get index" do
+  test 'should get index' do
     get posts_url, as: :json
     assert_response :success
   end
 
-  test "should create post" do
+  test 'should create post' do
     assert_difference('Post.count') do
       post posts_url, params: { post: { name: @post.name } }, as: :json
     end
@@ -18,17 +18,17 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     assert_response 201
   end
 
-  test "should show post" do
+  test 'should show post' do
     get post_url(@post), as: :json
     assert_response :success
   end
 
-  test "should update post" do
+  test 'should update post' do
     patch post_url(@post), params: { post: { name: @post.name } }, as: :json
     assert_response 200
   end
 
-  test "should destroy post" do
+  test 'should destroy post' do
     assert_difference('Post.count', -1) do
       delete post_url(@post), as: :json
     end

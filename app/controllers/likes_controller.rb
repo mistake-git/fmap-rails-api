@@ -18,13 +18,12 @@ class LikesController < ApplicationController
   end
 
   private
-  
+
   def set_like
     @like = Like.find(params[:id])
   end
-  
+
   def set_post
     @post = Post.find(params[:post_id])
   end
-  
 end

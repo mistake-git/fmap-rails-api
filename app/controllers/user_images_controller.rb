@@ -1,6 +1,6 @@
 class UserImagesController < ApplicationController
   before_action :set_user
-  
+
   def update
     if @user.update(user_params)
       render json: @user
@@ -10,9 +10,7 @@ class UserImagesController < ApplicationController
   end
 
   def destroy
-    if @user.image.attached?
-      @user.image.purge
-    end
+    @user.image.purge if @user.image.attached?
     render json: @user
   end
 
@@ -25,5 +23,4 @@ class UserImagesController < ApplicationController
   def set_user
     @user = User.find_by(uid: params[:id])
   end
-
 end
