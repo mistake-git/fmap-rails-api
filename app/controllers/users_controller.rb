@@ -30,7 +30,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    user_data = @user.posts.group(:name).sum(:number)
     render json: @user
   end
 
