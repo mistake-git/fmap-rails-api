@@ -22,10 +22,10 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gems-
       # Ruby をインストールする
-      - name: Set up Ruby 2.7
+      - name: Set up Ruby 2.6
         uses: actions/setup-ruby@v1
         with:
-          ruby-version: 2.7
+          ruby-version: 2.6
       # バンドラーをインストールし、初期化する
       - name: Bundle install
         run: |
