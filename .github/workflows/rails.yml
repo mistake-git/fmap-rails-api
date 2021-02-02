@@ -1,16 +1,43 @@
-name: Deploy
+name: Deploy to sample-rails-with-gha
 
 on:
+  # master ブランチにプッシュされた場合に動作する
   push:
-    branches: [ master ]
+    branches:
+      - master
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: akhileshns/heroku-deploy@v3.9.9 # This is the action
+      # GitHub リポジトリからコードを引っ張ってくる
+      - name: Checkout
+        uses: actions/checkout@v2
+      # 前回のコンテナキャッシュがあれば使用する。なければキャッシュを作る
+      - name: Cache multiple paths
+        uses: actions/cache@v2
         with:
-          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: "fishing-map-api" #Must be unique in Heroku
+          path: vendor/bundle
+          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-gems-
+      # Ruby をインストールする
+      - name: Set up Ruby 2.7
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: 2.7
+      # バンドラーをインストールし、初期化する
+      - name: Bundle install
+        run: |
+          gem install bundler
+          bundle config path vendor/bundle
+          bundle install --jobs 4 --retry 3
+       - name: Setup Database
+        run: |
+          bundle exec rails db:migrate
+      # ヘロクにデプロイする
+      - uses: akhileshns/heroku-deploy@v3.6.8 # This is the action
+        with:
+          heroku_api_key: ${{secrets.HEROKU_KEY}}
+          heroku_app_name: "fishing-map-api"
           heroku_email: "acbmstk0402@gmail.com"
