@@ -1,8 +1,10 @@
 name: Deploy
 
 on:
+  # master ブランチにプッシュされた場合に動作する
   push:
-    branches: [ master ]
+    branches:
+      - main
 
 jobs:
   deploy:
