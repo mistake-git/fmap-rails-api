@@ -1,8 +1,9 @@
-name: Deploy to sample-rails-with-gha
+name: Deploy
 
 on:
   push:
-    branches: [ master ]
+    branches: 
+      -[ master ]
 
 jobs:
   deploy:
