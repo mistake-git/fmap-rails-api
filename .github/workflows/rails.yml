@@ -31,8 +31,8 @@ jobs:
           gem install bundler:1.17.2
       # - name: lint
       #   run: bundle exec rubocop
-      - name: rspec
-        run: bundle exec rspec
+      # - name: rspec
+      #   run: bundle exec rspec
       # ヘロクにデプロイする
       - uses: akhileshns/heroku-deploy@v3.6.8 # This is the action
         with:
