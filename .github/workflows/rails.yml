@@ -23,17 +23,17 @@ jobs:
             ${{ runner.os }}-gems-
       # Ruby をインストールする
       - name: Set up Ruby 2.6
-        ruby/setup-ruby
+        uses: actions/setup-ruby@v1
         with:
-          ruby-version: 2.6
-      # バンドラーをインストールし、初期化する
-      - name: Bundle install
+          version: 2.6.3
+      - name: Build
         run: |
-          rm -rf $GEM_HOME/bundler/ $GEM_HOME/cache/bundler/
-          rm -rf .bundle/
-          rm -rf vendor/cache/
-          rm -rf Gemfile.lock
-          bundle install
+          gem install bundler
+          bundle install --jobs 4 --retry 3
+      - name: lint
+        run: bundle exec rubocop
+      - name: rspec
+        run: bundle exec rspec
       # ヘロクにデプロイする
       - uses: akhileshns/heroku-deploy@v3.6.8 # This is the action
         with:
