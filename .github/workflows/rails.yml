@@ -32,10 +32,6 @@ jobs:
           gem install bundler
           bundle config path vendor/bundle
           bundle install --jobs 4 --retry 3
-      - name: Setup Database
-        run: |
-          bundle exec rails db:migrate
-      # ヘロクにデプロイする
       - uses: akhileshns/heroku-deploy@v3.6.8 # This is the action
         with:
           heroku_api_key: ${{secrets.HEROKU_KEY}}
