@@ -1,10 +1,8 @@
 name: Deploy to sample-rails-with-gha
 
 on:
-  # master ブランチにプッシュされた場合に動作する
   push:
-    branches:
-      - [ master ]
+    branches: [ master ]
 
 jobs:
   deploy:
