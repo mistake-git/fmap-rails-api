@@ -1,5 +1,5 @@
 class PostSerializer < ActiveModel::Serializer
-  attributes :id, :name, :size, :weather, :weight, :date, :time, :number, :feed, :memo, :status, :created_at, :updated_at,
+  attributes :id, :name, :size, :weather, :weight, :date, :time, :number, :feed, :memo, :created_at, :updated_at,
              :image, :latitude, :longitude, :image_url
   has_many :likes
   has_many :likes_users

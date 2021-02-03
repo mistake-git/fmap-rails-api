@@ -21,7 +21,7 @@ Rails.application.routes.draw do
         member { get :data }
       end
       resources :user_images, only: [:update, :destroy]
-      resources :relationships, only: [:create, :destroy]
+      resources :relationships, only: [:index, :create, :destroy]
     end
   end
 end

@@ -86,7 +86,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.permit(:id, :user_id, :name, :size, :weather, :weight, :date, :time, :number, :feed, :memo, :status, :latitude,
+    params.permit(:id, :user_id, :name, :size, :weather, :weight, :date, :time, :number, :feed, :memo, :latitude,
                   :longitude, :image)
   end
 end
