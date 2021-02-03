@@ -2,13 +2,12 @@ class RelationshipsController < ApplicationController
   before_action :set_user
 
   def create
-    following = @current_user.follow(@other_user)
+    @current_user.follow(@other_user)
     render json: @other_user
   end
 
   def destroy
-    following = @current_user.unfollow(@other_user)
-    following.destroy
+    @current_user.unfollow(@other_user)
   end
 
   private
