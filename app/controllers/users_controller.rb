@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   include Rails.application.routes.url_helpers
-  before_action :set_user, only: [:show, :update, :posts, :likes_posts, :data]
+  before_action :set_user, only: [:show, :update, :posts, :likes_posts, :data, :followers, :followings]
 
   def search
     users = User.search(params[:search]).order(created_at: :desc)
@@ -42,6 +42,17 @@ class UsersController < ApplicationController
     likes_posts = @user.likes_posts.order(created_at: :desc)
     render json: likes_posts
   end
+
+  def followings
+    followings = @user.followings
+    render json: followings
+  end
+
+  def followers
+    followers = @user.followers
+    render json: followers
+  end
+
 
   def data
     user_data = @user.posts.group(:name).sum(:number)

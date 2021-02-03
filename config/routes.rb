@@ -18,6 +18,8 @@ Rails.application.routes.draw do
         collection {get :search}
         member { get :posts }
         member { get :likes_posts }
+        member { get :followers }
+        member { get :followings }
         member { get :data }
       end
       resources :user_images, only: [:update, :destroy]
