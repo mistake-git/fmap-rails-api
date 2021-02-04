@@ -29,7 +29,6 @@ class PostsController < ApplicationController
   end
 
   def show
-    user = @post.user
     render json: @post
   end
 
