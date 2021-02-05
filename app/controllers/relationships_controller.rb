@@ -8,6 +8,12 @@ class RelationshipsController < ApplicationController
 
   def destroy
     @current_user.unfollow(@other_user)
+    render json: @other_user
+  end
+
+  def is_followed
+    is_followed = @current_user.following?(@other_user)
+    render json: is_followed
   end
 
   private

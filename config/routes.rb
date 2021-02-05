@@ -12,8 +12,8 @@ Rails.application.routes.draw do
         member { get :likes_users }
         member { get :data }
         member { get :data }
-        
       end
+
       resources :users do
         collection {get :search}
         member { get :posts }
@@ -22,8 +22,12 @@ Rails.application.routes.draw do
         member { get :followings }
         member { get :data }
       end
+
       resources :user_images, only: [:update, :destroy]
+
       resources :relationships, only: [:create, :destroy]
+      get 'relationships/is_followed', to: 'relationships#is_followed'
+      
     end
   end
 end
