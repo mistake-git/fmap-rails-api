@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   include Rails.application.routes.url_helpers
-  before_action :set_post, only: [:show, :data, :likes, :likes_users, :update, :destroy, :ranking]
+  before_action :set_post, only: [:show, :data, :likes, :likes_users, :update, :destroy, :ranking, :user]
 
   def search
     posts = Post.search(params[:search]).order(created_at: :desc)
@@ -31,6 +31,12 @@ class PostsController < ApplicationController
   def show
     render json: @post
   end
+
+  def user
+    user = @post.user
+    render json: user.serializable_hash(only: :id)
+  end
+
 
   def data
     same_name_post = Post.where(name: @post.name)

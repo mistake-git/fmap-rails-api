@@ -11,7 +11,7 @@ Rails.application.routes.draw do
         member { get :likes }
         member { get :likes_users }
         member { get :data }
-        member { get :data }
+        member { get :user }
       end
 
       resources :users do
