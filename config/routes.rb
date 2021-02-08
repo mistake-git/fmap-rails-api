@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
       resources :users do
         collection {get :search}
+        member { get :feed }
         member { get :posts }
         member { get :likes_posts }
         member { get :followers }
