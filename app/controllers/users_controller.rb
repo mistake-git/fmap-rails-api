@@ -33,11 +33,6 @@ class UsersController < ApplicationController
     render json: @user
   end
 
-  def feed
-    posts = @user.feed
-    render json: posts
-  end  
-
   def posts
     posts = @user.posts.order(created_at: :desc)
     render json: posts
@@ -58,6 +53,10 @@ class UsersController < ApplicationController
     render json: followers
   end
 
+  def feed
+    posts = @user.feed.page(params[:page]).per(4).order(created_at: :desc)
+    render json: posts
+  end  
 
   def data
     user_data = @user.posts.group(:name).sum(:number)

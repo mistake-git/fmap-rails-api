@@ -42,7 +42,6 @@ class User < ApplicationRecord
     self.followings.include?(other_user)
   end
 
-
   #自分の投稿、フォロー中のユーザーの投稿を取得する
   def feed
     following_ids = "SELECT follow_id FROM relationships
