@@ -3,5 +3,5 @@ class PostSerializer < ActiveModel::Serializer
              :image, :latitude, :longitude, :image_url
   has_many :likes
   has_many :likes_users
-  belongs_to :user
+  belongs_to :user, serializer: UserSerializer
 end
