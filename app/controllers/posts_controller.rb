@@ -11,8 +11,8 @@ class PostsController < ApplicationController
     results = Geocoder.search(params[:address])
     lat_lng = results.first.coordinates
     render json: {
-      lat: lat_lng[1],
-      lng: lat_lng[0]
+      lat: lat_lng[0],
+      lng: lat_lng[1]
     }
   end
 
