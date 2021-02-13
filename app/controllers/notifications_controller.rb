@@ -16,7 +16,7 @@ class NotificationsController < ApplicationController
   private
 
   def set_current_user
-    @current_user = User.find(params[:user_id])
+    @current_user = User.find_by(uid: params[:user_id])
   end
 
   def set_notifications
