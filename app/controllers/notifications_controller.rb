@@ -1,6 +1,7 @@
 class NotificationsController < ApplicationController
   before_action :set_current_user 
-  
+  before_action :set_notifications
+
   def index
     render json: notifications
   end
