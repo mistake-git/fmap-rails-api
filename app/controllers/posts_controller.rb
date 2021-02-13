@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :data, :likes, :likes_users, :update, :destroy, :ranking, :user]
 
   def search
-    posts = Post.search(params[:search]).order(created_at: :desc)
+    posts = Post.search(params[:search])
     render json: posts
   end
 
@@ -17,12 +17,12 @@ class PostsController < ApplicationController
   end
 
   def map
-    posts = Post.all.order(created_at: :desc).limit(100)
+    posts = Post.all.limit(100)
     render json: posts
   end
 
   def index
-    posts = Post.page(params[:page]).per(4).order(created_at: :desc)
+    posts = Post.page(params[:page]).per(4)
     render json: posts
   end
 
