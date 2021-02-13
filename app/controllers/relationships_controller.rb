@@ -4,6 +4,7 @@ class RelationshipsController < ApplicationController
   def create
     @current_user.follow(@other_user)
     render json: @other_user
+    @user.create_notification_follow(@current_user)
   end
 
   def destroy
