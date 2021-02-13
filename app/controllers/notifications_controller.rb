@@ -6,7 +6,7 @@ class NotificationsController < ApplicationController
     render json: notifications
   end
 
-  def checked
+  def check
     notifications.where(checked: false).each do |notification|
       notification.update_attributes(checked: true)
     end

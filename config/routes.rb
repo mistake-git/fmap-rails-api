@@ -28,6 +28,9 @@ Rails.application.routes.draw do
 
       resources :relationships, only: [:create, :destroy]
       get 'relationships/is_followed', to: 'relationships#is_followed'
+
+      resources :notifications, only: [:index]
+      get 'notifications/check', to: 'relationships#check'
       
     end
   end
