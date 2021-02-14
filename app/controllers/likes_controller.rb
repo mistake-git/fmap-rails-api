@@ -11,7 +11,7 @@ class LikesController < ApplicationController
     current_user = User.find(params[:like][:user_id])
     like = Like.first_or_create!(user_id: current_user.id, post_id: @post.id)
     likes_users = @post.likes_users
-    @post.create_notification_like!(current_user)
+    @post.create_notification_like(current_user)
     render json: like
   end
 

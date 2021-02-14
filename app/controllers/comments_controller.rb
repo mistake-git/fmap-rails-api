@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
       comment_params.merge(post_id: @post.id)
     )
     if comment.save
-      @post.create_notification_comment!(current_user, comment.id)
+      @post.create_notification_comment(current_user, comment.id)
       render json: comment
     else
       render json: comment.errors
