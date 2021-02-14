@@ -30,7 +30,7 @@ Rails.application.routes.draw do
       get 'relationships/is_followed', to: 'relationships#is_followed'
 
       resources :notifications, only: [:index]
-      get 'notifications/check', to: 'relationships#check'
+      get 'notifications/check', to: 'notifications#check'
       
     end
   end
