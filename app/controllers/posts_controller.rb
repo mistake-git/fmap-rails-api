@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :data, :likes, :likes_users, :update, :destroy, :ranking, :user]
 
   def search
-    posts = Post.search(params[:search]).order(created_at: :desc
+    posts = Post.search(params[:search])
     render json: posts
   end
 
