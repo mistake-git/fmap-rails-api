@@ -1,6 +1,5 @@
 class Post < ApplicationRecord
   include Rails.application.routes.url_helpers
-  default_scope -> { order(created_at: :desc) }
   validates :name, presence: true, format: { with: /\A[\p{katakana}\p{blank}ー－]+\z/ }
   validates :latitude, presence: true
   validates :longitude, presence: true
