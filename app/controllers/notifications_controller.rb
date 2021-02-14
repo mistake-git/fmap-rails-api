@@ -12,6 +12,11 @@ class NotificationsController < ApplicationController
     end
     render json: notifications
   end
+  
+  def unchecked_notifications
+    unchecked_notifications_count = @current_user.passive_notifications.where(checked: false).count
+    render json: unchecked_notifications_count
+  end
 
   private
 
