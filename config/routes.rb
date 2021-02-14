@@ -31,6 +31,7 @@ Rails.application.routes.draw do
 
       resources :notifications, only: [:index]
       get 'notifications/check', to: 'notifications#check'
+      get 'notifications/unchecked_notification_count', to: 'notifications#unchecked_notification_count'
       
     end
   end
