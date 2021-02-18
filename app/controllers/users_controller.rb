@@ -61,7 +61,7 @@ class UsersController < ApplicationController
   def data
     fish_data = @user.posts.group(:name).sum(:number)
     month_data = @user.posts.group('MONTH(created_at)').count
-    render json: {fish_data, month_data}
+    render json: {fish_data: fish_data, month_data: month_data}
   end
 
   private
