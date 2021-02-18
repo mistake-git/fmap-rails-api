@@ -35,7 +35,6 @@ class PostsController < ApplicationController
     render json: user.serializable_hash(only: :id)
   end
 
-
   def data
     same_name_post = Post.where(name: @post.name)
     size_data = same_name_post.where.not(size: nil).group(:size).sum(:number)
