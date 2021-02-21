@@ -1,13 +1,13 @@
 class ApplicationController < ActionController::API
     before_action :auth, :require_auth
 
-    def authentication
+    def auth
         pattern = /^Bearer /
         header  = request.headers['Authorization']
         token = header.gsub(pattern, '') if header && header.match(pattern)
         validator = FirebaseAuth.new(token)
         payload = validator.validate!
-        @current_user = User.find_by(uid: payload.uid)
+        @current_user = User.find_by(uid: payload["user_id"])
     end
 
     def require_auth
