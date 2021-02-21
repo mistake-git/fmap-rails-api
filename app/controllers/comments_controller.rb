@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
 
   def create
     comment = Comment.new(
-      comment_params.merge(post_id: @post.id)
+      comment_params.merge(post_id: @post.id, user_id: @current_user.id)
     )
     if comment.save
       @post.create_notification_comment(@current_user, comment.id)
@@ -35,7 +35,7 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:id, :content, :user_id)
+    params.require(:comment).permit(:id, :content)
   end
 
   def set_post
