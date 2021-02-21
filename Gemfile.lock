@@ -105,6 +105,7 @@ GEM
       concurrent-ruby (~> 1.0)
     jmespath (1.4.0)
     jsonapi-renderer (0.2.2)
+    jwt (2.2.2)
     kaminari (1.2.1)
       activesupport (>= 4.1.0)
       kaminari-actionview (= 1.2.1)
@@ -243,6 +244,7 @@ DEPENDENCIES
   dotenv-rails
   factory_bot_rails
   geocoder
+  jwt
   kaminari
   listen (>= 3.0.5, < 3.2)
   mini_magick

@@ -60,3 +60,6 @@ gem "geocoder"
 
 #ページネーション
 gem 'kaminari'
+
+# JWT
+gem 'jwt'
