@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   include Rails.application.routes.url_helpers
   before_action :set_user, only: [:show, :update, :posts, :likes_posts, :data, :followers, :followings, :feed]
+  before_action :auth, only: [:update]
+  before_action :require_auth, only: [:update]
 
   def search
     users = User.search(params[:search]).order(created_at: :desc)

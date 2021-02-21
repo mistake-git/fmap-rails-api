@@ -1,6 +1,7 @@
 class NotificationsController < ApplicationController
   before_action :auth
   before_action :set_notifications
+  before_action :require_auth
 
   def index
     render json: @notifications

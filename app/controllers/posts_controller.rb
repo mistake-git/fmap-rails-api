@@ -1,7 +1,8 @@
 class PostsController < ApplicationController
   include Rails.application.routes.url_helpers
   before_action :set_post, only: [:show, :data, :likes, :likes_users, :update, :destroy, :ranking, :user]
-  before_action :auth, only: [:create]
+  before_action :auth, only: [:create, :update, :destroy]
+  before_action :require_auth, only: [:create, :update, :destroy]
 
   def search
     posts = Post.search(params[:search])

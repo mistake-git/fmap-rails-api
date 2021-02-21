@@ -1,5 +1,6 @@
 class UserImagesController < ApplicationController
   before_action :auth
+  before_action :require_auth
 
   def update
     if @current_user.update(user_params)
