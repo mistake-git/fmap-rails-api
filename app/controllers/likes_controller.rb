@@ -10,8 +10,8 @@ class LikesController < ApplicationController
   end
 
   def create
-    like = Like.first_or_create!(user_id: current_user.id, post_id: @post.id)
-    @post.create_notification_like(current_user)
+    like = Like.first_or_create!(user_id: @current_user.id, post_id: @post.id)
+    @post.create_notification_like(@current_user)
     render json: like
   end
 
