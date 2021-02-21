@@ -2,7 +2,6 @@ class CommentsController < ApplicationController
   before_action :set_post, only: [:index, :create]
   before_action :set_comment, only: [:update, :destroy]
   before_action :auth, only: [:create]
-  before_action :require_auth, only: [:create, :update, :destroy]
 
   def index
     comments = @post.comments.order(created_at: :desc)

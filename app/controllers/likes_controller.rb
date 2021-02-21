@@ -2,7 +2,6 @@ class LikesController < ApplicationController
   before_action :set_post
   before_action :set_like, except: [:index, :create]
   before_action :auth, only: [:create]
-  before_action :require_auth, only: [:create, :destroy]
 
   def index
     likes = @post.likes
@@ -28,4 +27,5 @@ class LikesController < ApplicationController
   def set_post
     @post = Post.find(params[:post_id])
   end
+
 end

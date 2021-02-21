@@ -1,6 +1,5 @@
 class NotificationsController < ApplicationController
   before_action :auth
-  before_action :require_auth
   before_action :set_notifications
 
   def index
