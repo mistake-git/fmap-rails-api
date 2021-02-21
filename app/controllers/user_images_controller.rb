@@ -1,17 +1,17 @@
 class UserImagesController < ApplicationController
-  before_action :set_user
+  before_action :auth, :require_auth
 
   def update
-    if @user.update(user_params)
+    if @current_user.update(user_params)
       render json: @user
     else
-      render json: @user.errors
+      render json: @current_user.errors
     end
   end
 
   def destroy
-    @user.image.purge if @user.image.attached?
-    render json: @user
+    @user.image.purge if @current_user.image.attached?
+    render json: @current_user
   end
 
   private
@@ -20,7 +20,4 @@ class UserImagesController < ApplicationController
     params.permit(:uid, :image)
   end
 
-  def set_user
-    @user = User.find_by(uid: params[:id])
-  end
 end

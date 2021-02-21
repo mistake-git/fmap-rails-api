@@ -1,6 +1,8 @@
 class CommentsController < ApplicationController
-  before_action :set_post, only: [:index, :create, :destroy]
+  before_action :set_post, only: [:index, :create]
   before_action :set_comment, only: [:update, :destroy]
+  before_action :auth, only: [:create]
+  before_action :require_auth, only: [:create, :update, :destroy]
 
   def index
     comments = @post.comments.order(created_at: :desc)
@@ -8,7 +10,6 @@ class CommentsController < ApplicationController
   end
 
   def create
-    current_user = User.find(params[:comment][:user_id])
     comment = Comment.new(
       comment_params.merge(post_id: @post.id)
     )

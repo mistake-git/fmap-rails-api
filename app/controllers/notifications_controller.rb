@@ -1,5 +1,6 @@
 class NotificationsController < ApplicationController
-  before_action :set_current_user 
+  before_action :auth
+  before_action :require_auth
   before_action :set_notifications
 
   def index
@@ -19,12 +20,6 @@ class NotificationsController < ApplicationController
 
   def set_notifications
     @notifications = @current_user.passive_notifications.all
-  end
-
-  private
-
-  def set_current_user
-    @current_user = User.find_by(uid: params[:user_id])
   end
   
 end
