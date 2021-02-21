@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   include Rails.application.routes.url_helpers
   before_action :set_post, only: [:show, :data, :likes, :likes_users, :update, :destroy, :ranking, :user]
+  before_action :auth, only: [:create]
 
   def search
     posts = Post.search(params[:search])
@@ -61,7 +62,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    post = Post.new(post_params)
+    post = Post.new(post_params.merge(user_id: @current_user.id))
     if post.save!
       render json: post
     else
