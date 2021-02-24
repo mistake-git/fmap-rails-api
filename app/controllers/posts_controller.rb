@@ -53,7 +53,7 @@ class PostsController < ApplicationController
   end
 
   def ranking
-    posts = Post.where(name: @post.name).where('size IS NOT NULL').order(size: 'DESC').limit(8)
+    posts = Post.where(name: @post.name).where('size IS NOT NULL').order(size: 'DESC').page(params[:page]).per(4)
     render json:  posts
   end
 
