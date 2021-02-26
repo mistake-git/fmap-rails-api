@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
   before_action :require_auth, except: [:index]
 
   def index
-    comments = @post.comments.order(created_at: :desc)
+    comments = @post.comments.page(params[:page]).per(1).order(created_at: :desc)
     render json: comments
   end
 
