@@ -1,17 +1,17 @@
 class LikesController < ApplicationController
   before_action :set_post
-  before_action :set_like, except: [:index, :create]
-  before_action :auth, except: [:index]
-  before_action :require_auth, except: [:index]
-
-  def index
-    likes = @post.likes
-    render json: likes
-  end
+  before_action :set_like, except: [:index, :create, :my_like]
+  before_action :auth
+  before_action :require_auth
 
   def create
     like = Like.first_or_create!(user_id: @current_user.id, post_id: @post.id)
     @post.create_notification_like(@current_user)
+    render json: like
+  end
+
+  def my_like
+    like = Like.find_by(post_id: @post.id, user_id: @current_user.id)
     render json: like
   end
 

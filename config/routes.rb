@@ -3,7 +3,9 @@ Rails.application.routes.draw do
     scope :v1 do
       resources :posts do
         resources :comments
-        resources :likes
+        resources :likes do
+          collection {get :my_like}
+        end
         collection {get :search}
         collection {get :get_lat_lng}
         collection {get :map}
